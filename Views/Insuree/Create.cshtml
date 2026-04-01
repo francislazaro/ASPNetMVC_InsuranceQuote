@@ -1,0 +1,70 @@
+﻿@model ASPNetMVC_InsuranceQuote.Models.Insuree
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Insurance Quote</h2>
+
+@using (Html.BeginForm("Create", "Insuree", FormMethod.Post))
+{
+    <div>
+        <label>First Name</label>
+        @Html.TextBoxFor(model => model.FirstName)
+    </div>
+
+    <div>
+        <label>Last Name</label>
+        @Html.TextBoxFor(model => model.LastName)
+    </div>
+
+    <div>
+        <label>Email</label>
+        @Html.TextBoxFor(model => model.EmailAddress)
+    </div>
+
+    <div>
+        <label>Date of Birth</label>
+        @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { type = "date" })
+    </div>
+
+    <div>
+        <label>Car Year</label>
+        @Html.TextBoxFor(model => model.CarYear)
+    </div>
+
+    <div>
+        <label>Car Make</label>
+        @Html.TextBoxFor(model => model.CarMake)
+    </div>
+
+    <div>
+        <label>Car Model</label>
+        @Html.TextBoxFor(model => model.CarModel)
+    </div>
+
+    <div>
+        <label>Speeding Tickets</label>
+        @Html.TextBoxFor(model => model.SpeedingTickets)
+    </div>
+
+    <div>
+        <label>DUI</label>
+        @Html.CheckBoxFor(model => model.DUI)
+    </div>
+
+    <div>
+        <label>Coverage Type</label>
+        @Html.DropDownListFor(model => model.CoverageType,
+            new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Liability", Value = "Liability" },
+                new SelectListItem { Text = "Full", Value = "Full" }
+            })
+    </div>
+
+    @Html.HiddenFor(model => model.Quote)
+
+    <br />
+    <input type="submit" value="Get Quote" />
+}
